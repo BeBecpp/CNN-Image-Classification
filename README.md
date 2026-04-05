@@ -1,118 +1,145 @@
-# 🧠 CNN Image Classification 
+# CNN Image Classification — Mongolian License Plate Length
 
-## 📌 Overview
+## Overview
 
-This project implements a **Convolutional Neural Network (CNN)** using PyTorch for image classification.
-The model is trained and evaluated on a dataset provided via Kaggle competition.
+This project focuses on classifying Mongolian vehicle license plates based on the number of characters present in the plate.
 
-The goal is to build a simple but effective deep learning pipeline for classifying images into predefined categories.
+The task is a **binary classification problem**:
 
----
+* Class 0 → Plate contains **6 characters**
+* Class 1 → Plate contains **7 characters**
 
-## 🚀 Features
-
-* Custom CNN architecture built with PyTorch
-* Custom Dataset & DataLoader implementation
-* Image preprocessing using torchvision transforms
-* Train/Test split with sklearn
-* Model evaluation using accuracy score
-* Ready for Kaggle submission workflow
+The model is implemented using **PyTorch** with a Convolutional Neural Network (CNN) architecture.
 
 ---
 
-## 🧱 Model Architecture
+## Problem Statement
 
-The model (`SimpleCNN`) consists of:
+Given an image of a vehicle license plate, the goal is to predict whether the plate contains **6 or 7 total characters**.
 
-* Convolutional layers:
-
-  * Conv2D → ReLU → MaxPool
-  * Conv2D → ReLU → MaxPool
-* Fully connected layers:
-
-  * Flatten
-  * Linear → ReLU → Dropout
-  * Output layer
+This requires the model to learn visual patterns from plate structures, including variations in formatting and symbols.
 
 ---
 
-## 📂 Dataset
+## Dataset
 
-* Source: Kaggle Competition
-* Structure:
+This project uses a **synthetic dataset** based on Mongolian vehicle license plates.
 
-  * `train/` – training images
-  * `test/` – test images
-  * `train.csv` – labels
-  * `sample_submission.csv`
+* Total images: **3000**
+* Training set: **1000 images**
+* Test set: **2000 images**
+* Image type: JPG
+
+### Classes
+
+* **0** → Plate contains 6 characters
+* **1** → Plate contains 7 characters
+
+### Notes
+
+* Some plates include additional symbols such as **Soyombo**
+* Country identifiers like **MNG / MGL** may appear
+
+Dataset format includes:
+
+* `train.csv` → training labels
+* `sample_submission.csv` → submission format
 
 ---
 
-## ⚙️ Tech Stack
+## Model
+
+A Convolutional Neural Network (CNN) is used to extract features from images and perform classification.
+
+### Workflow
+
+1. Load dataset from CSV
+2. Preprocess images (resize, normalization)
+3. Train CNN model
+4. Evaluate performance using accuracy
+5. Predict on unseen test data
+6. Generate submission file
+
+---
+
+## Tech Stack
 
 * Python
 * PyTorch
-* torchvision
 * NumPy
-* scikit-learn
+* Pandas
+* PIL (Image processing)
 
 ---
 
-## 🛠 Installation
+## Evaluation
 
-```bash
-pip install torch torchvision numpy scikit-learn
+The model is evaluated using **Accuracy score**.
+
+### Submission Format
+
+```
+ID,label
+0,0
+1,1
+2,0
 ```
 
 ---
 
-## ▶️ How to Run
-
-1. Clone the repository:
+## How to Run
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-```
+# Clone repository
+git clone https://github.com/BeBecpp/CNN-Image-Classification.git
 
-2. Run training:
+# Navigate to project
+cd CNN-Image-Classification
 
-```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Train model
 python train.py
+
+# Generate submission
+python predict.py
 ```
 
 ---
 
-## 📊 Evaluation
+## Results
 
-* Metric: **Accuracy**
-* Uses `sklearn.metrics.accuracy_score`
+The model is able to learn meaningful features from plate images and generalize to unseen data.
+
+*(Add accuracy here if available, e.g. Accuracy: 0.87)*
 
 ---
 
-## 📈 Future Improvements
+## Future Improvements
 
+* Improve model accuracy with hyperparameter tuning
 * Add data augmentation
-* Use pretrained models (ResNet, EfficientNet)
-* Add confusion matrix & visualization
-* Hyperparameter tuning
-* Deploy as API (FastAPI)
+* Try deeper architectures (ResNet, EfficientNet)
+* Build a web interface for image upload and prediction
 
 ---
 
-## 🌐 Portfolio Extension (Recommended)
+## Author
 
-This project can be extended by:
+Bayarbayasgalan (BeBe)
 
-* Creating a REST API for predictions
-* Building a frontend (React/Vue)
-* Upload image → get prediction
-
----
-
-## 👨‍💻 Author
-
-**Bayarbayasgalan (BeBe)**
-Frontend Developer | Exploring AI & Machine Learning
+GitHub: [https://github.com/BeBecpp](https://github.com/BeBecpp)
+Portfolio: [https://nero404.blogspot.com/](https://nero404.blogspot.com/)
 
 ---
+
+## Note
+
+This project is based on a competition-style dataset and demonstrates practical experience in:
+
+* Deep learning workflows
+* Image classification
+* Data handling and preprocessing
+* Model training and evaluation
+<img width="280" height="720" alt="image" src="https://github.com/user-attachments/assets/af258ea5-caf8-4afc-a150-36f622cc09f7" />
